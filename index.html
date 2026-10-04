@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Manisha - Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    padding: 30px 20px;
+    line-height: 1.5;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    color: white;
+    padding: 32px 45px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 300px; height: 300px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60%; left: -10%;
+    width: 250px; height: 250px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .role {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.95;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    display: inline-block;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    font-size: 0.88rem;
+    font-weight: 400;
+  }
+
+  .contact-info span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.95);
+  }
+
+  /* ===== BODY ===== */
+  .body {
+    padding: 32px 45px 40px;
+  }
+
+  /* ===== SECTION ===== */
+  .section {
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #6366f1;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e7ff;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    border-radius: 6px;
+    display: inline-block;
+    box-shadow: 0 3px 10px rgba(99,102,241,0.3);
+  }
+
+  /* ===== PERSONAL INFO ===== */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 30px;
+    font-size: 0.9rem;
+    background: #f8fafc;
+    padding: 18px 22px;
+    border-radius: 10px;
+    border-left: 4px solid #8b5cf6;
+  }
+
+  .info-grid .row {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  .info-grid .row.full {
+    grid-column: 1 / -1;
+  }
+
+  .info-grid .label {
+    color: #64748b;
+    font-weight: 500;
+    min-width: 130px;
+    font-size: 0.85rem;
+  }
+
+  .info-grid .value {
+    color: #1e293b;
+    font-weight: 600;
+  }
+
+  /* ===== OBJECTIVE ===== */
+  .objective {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.7;
+    text-align: justify;
+    background: linear-gradient(135deg, #fef3c7 0%, #fce7f3 100%);
+    padding: 16px 20px;
+    border-radius: 10px;
+    border-left: 4px solid #f59e0b;
+  }
+
+  /* ===== EDUCATION ===== */
+  .edu-item {
+    margin-bottom: 14px;
+    padding: 14px 18px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border-left: 4px solid #6366f1;
+    transition: 0.2s;
+  }
+
+  .edu-item:last-child { margin-bottom: 0; }
+
+  .edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+    gap: 12px;
+  }
+
+  .edu-degree {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  .edu-year {
+    font-size: 0.75rem;
+    color: white;
+    font-weight: 700;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    padding: 3px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .edu-institute {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 500;
+  }
+
+  .edu-institute a {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dashed #a5b4fc;
+  }
+
+  .edu-institute a:hover {
+    color: #ec4899;
+    border-bottom-color: #ec4899;
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-pill {
+    padding: 7px 16px;
+    background: linear-gradient(135deg, #eef2ff, #fce7f3);
+    border: 1px solid #c7d2fe;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #4338ca;
+  }
+
+  /* ===== PROJECTS ===== */
+  .project {
+    margin-bottom: 14px;
+    padding: 14px 18px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border-left: 4px solid #22d3ee;
+  }
+
+  .project:last-child { margin-bottom: 0; }
+
+  .project-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .project-title a {
+    color: #0891b2;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    background: #cffafe;
+    border-radius: 100px;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+
+  .project-tech {
+    font-size: 0.78rem;
+    color: #7c3aed;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  /* ===== LANGUAGES ===== */
+  .langs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .lang-pill {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    border: 1px solid #6ee7b7;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #065f46;
+  }
+
+  /* ===== DECLARATION ===== */
+  .declaration {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #ede9fe 0%, #fce7f3 100%);
+    border-radius: 10px;
+    border-left: 4px solid #8b5cf6;
+    font-size: 0.85rem;
+    color: #4c1d95;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .declaration strong {
+    font-style: normal;
+    color: #6366f1;
+    font-weight: 700;
+  }
+
+  /* ===== SIGNATURE ===== */
+  .signature {
+    margin-top: 36px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .sign-box {
+    text-align: center;
+  }
+
+  .sign-line {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #6366f1;
+    min-width: 160px;
+  }
+
+  .sign-label {
+    font-size: 0.78rem;
+    color: #64748b;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body {
+      background: white;
+      padding: 0;
+    }
+    .page {
+      width: 100%;
+      min-height: auto;
+      margin: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .header { padding: 28px 40px 24px; }
+    .body { padding: 28px 40px 32px; }
+    .name { font-size: 2.2rem; }
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  @media (max-width: 800px) {
+    .page { width: 100%; }
+    .header { padding: 24px 24px 20px; }
+    .body { padding: 24px 24px; }
+    .name { font-size: 1.7rem; }
+    .info-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-content">
+      <div class="name">Manisha</div>
+      <div class="role">Web Developer · ADCA Certified</div>
+      <div class="contact-info">
+        <span>📧 m93258784@gmail.com</span>
+        <span>📱 +91 7048935750</span>
+        <span>📍 Sector 21, Gurugram, Haryana - 110061</span>
+        <span>🌐 manisha613.github.io</span>
+        <span>💼 github.com/manisha613</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- Personal Information -->
+    <div class="section">
+      <div class="section-title">Personal Information</div>
+      <div class="info-grid">
+        <div class="row"><span class="label">Father's Name</span><span class="value">: Bhushan Pathak</span></div>
+        <div class="row"><span class="label">Mother's Name</span><span class="value">: Usha Pathak</span></div>
+        <div class="row"><span class="label">Date of Birth</span><span class="value">: 01 January 2004</span></div>
+        <div class="row"><span class="label">Marital Status</span><span class="value">: Unmarried</span></div>
+        <div class="row full"><span class="label">Address</span><span class="value">: Sector 21, Gurugram, Haryana - 110061</span></div>
+      </div>
+    </div>
+
+    <!-- Career Objective -->
+    <div class="section">
+      <div class="section-title">Career Objective</div>
+      <p class="objective">
+        Passionate and detail-oriented Web Developer with ADCA certification and hands-on experience
+        in building responsive, user-friendly websites using HTML, CSS and JavaScript. Seeking an
+        opportunity to contribute my technical skills, creativity and dedication to a growing
+        organization where I can learn, grow and add value to the team.
+      </p>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-title">Education</div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <div class="edu-degree">Bachelor of Arts (B.A.)</div>
+          <div class="edu-year">Graduate</div>
+        </div>
+        <div class="edu-institute">Jhansi University, Uttar Pradesh</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <div class="edu-degree">Class 12th (Intermediate)</div>
+          <div class="edu-year">U.P. Board</div>
+        </div>
+        <div class="edu-institute">Uttar Pradesh Board of High School & Intermediate Education</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <div class="edu-degree">Class 10th (High School)</div>
+          <div class="edu-year">U.P. Board</div>
+        </div>
+        <div class="edu-institute">Uttar Pradesh Board of High School & Intermediate Education</div>
+      </div>
+    </div>
+
+    <!-- Certification -->
+    <div class="section">
+      <div class="section-title">Certification</div>
+      <div class="edu-item">
+        <div class="edu-header">
+          <div class="edu-degree">ADCA — Advanced Diploma in Computer Applications</div>
+          <div class="edu-year">Certified</div>
+        </div>
+        <div class="edu-institute">
+          Samyak IT Solution Pvt. Ltd., Sector-14, Gurugram —
+          <a href="https://samyakinfotech.com/" target="_blank" rel="noopener">ADCA Course Link</a><br>
+          Computer Fundamentals · MS Office (Word, Excel, PowerPoint) · Internet &amp; Email · Programming Basics
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <div class="section-title">Technical Skills</div>
+      <div class="skills-grid">
+        <span class="skill-pill">HTML5</span>
+        <span class="skill-pill">CSS3</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">Responsive Design</span>
+        <span class="skill-pill">python</span>
+        <span class="skill-pill">tallyprime</span>
+        <span class="skill-pill">GitHub Pages</span>
+        <span class="skill-pill">MS Office</span>
+        <span class="skill-pill">Computer Fundamentals</span>
+        <span class="skill-pill">Adv.Excel</span>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <div class="section-title">Projects</div>
+
+      <div class="project">
+        <div class="project-title">
+          NexaCorp — Business Website
+          <a href="https://manisha613.github.io/NexaCorp.webside/" target="_blank">Live Demo →</a>
+        </div>
+        <div class="project-desc">
+          A modern corporate landing page with animated stats, services showcase, mission &amp; vision
+          cards and a clean contact section.
+        </div>
+        <div class="project-tech">Tech: HTML · CSS · JavaScript</div>
+      </div>
+
+      <div class="project">
+        <div class="project-title">
+          Food Hotel — Luxury Dining &amp; Stay
+          <a href="https://manisha613.github.io/food-website/" target="_blank">Live Demo →</a>
+        </div>
+        <div class="project-desc">
+          A premium hotel website with room listings, pricing cards, amenity highlights and a
+          complete booking form with live price calculation.
+        </div>
+        <div class="project-tech">Tech: HTML · CSS · JavaScript</div>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="section">
+      <div class="section-title">Languages</div>
+      <div class="langs">
+        <span class="lang-pill">Hindi</span>
+        <span class="lang-pill">English</span>
+      </div>
+    </div>
+
+    <!-- Declaration -->
+    <div class="declaration">
+      <strong>Declaration:</strong>
+      I hereby declare that the information provided above is true to the best of my knowledge
+      and belief.
+    </div>
+
+    <!-- Signature -->
+    <div class="signature">
+      <div class="sign-box">
+        <div class="sign-line">Manisha</div>
+        <div class="sign-label">Signature</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
